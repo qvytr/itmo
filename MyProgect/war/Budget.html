@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Hello App Engine</title>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    </head>
+    <body>
+        <form>
+            <p>Введите параметры бюджета:</p>
+            <ul id="listbudget">
+                <li>
+                    <label>Название статьи: </label><input id="budgetrow1" type="text" />
+                    <label>,сумма </label><input id="budgetsum1" type="text" value="" />
+                </li>
+            </ul>
+        </form>
+
+        <button id="calc"  onClick="calcFunction()">Визуализировать</button>
+        <button id="add" onClick="addFunction()">Добавить строку</button>
+        
+
+        <span id="result"></span>
+
+        <div id="visualization"></div>
+
+        <script type="text/javascript">
+            var maxcell = 1;
+            var request;
+            var url = "";
+            function addFunction() {
+                maxcell++;
+
+                $('#listbudget').append("<li>Название статьи: <input id=\"budgetrow" + maxcell +
+                        "\" type=\"text\"/>, сумма <input id=\"budgetsum" + maxcell + "\" type=\"text\"/></li>");
+            }
+
+            function calcFunction() {
+                var temp = 1;
+                var string = "";
+                while (temp <= maxcell) {
+                    var nvar = $('#budgetrow' + temp).val();
+                    string = string + "budgetrow" + temp + "=" + nvar + "&";
+                    nvar = $('#budgetsum' + temp).val();
+                    string = string + "budgetsum" + temp + "=" + nvar + "&";
+                    temp++;
+                }
+                string = string + "max=" + maxcell;
+
+                url = "myprogectBudget?" + string;
+                request = new XMLHttpRequest();
+                request.open("GET", url, true);
+                request.send(null);
+                request.onreadystatechange = function () {
+                    if (request.readyState === 4 && request.status === 200) {
+                        document.getElementById("visualization").innerHTML = request.responseText;
+                    }
+                }
+
+            }
+        </script>
+    </body>
+</html>
