@@ -7,6 +7,7 @@ import javax.servlet.http.*;
 
 @SuppressWarnings("serial")
 public class DomRabServlet extends HttpServlet {
+	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		PrintWriter pw = resp.getWriter();
@@ -19,7 +20,7 @@ public class DomRabServlet extends HttpServlet {
 			minInt = Integer.parseInt(min);
 			maxInt = Integer.parseInt(max);
 		} catch (Exception e) {
-			pw.println("Invalid input format2");
+			pw.println("Invalid input format");
 		}
 		printInt(minInt, maxInt, resp);
 

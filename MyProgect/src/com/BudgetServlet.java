@@ -193,14 +193,10 @@ public class BudgetServlet extends HttpServlet {
 			innerHtml += "</tr>";
 		}
 
-		pw.println("<table border='1' width='1000' height='1000'>" + innerHtml
+		pw.println("<table border='1' width='640' height='480'>" + innerHtml
 				+ "</table>");
 	}
 
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
-		doGet(request, response);
-	}
+	
 
 }
