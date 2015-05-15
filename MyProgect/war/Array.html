@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>1</title>
+
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+</head>
+
+<body>
+	<p>Ближайшее к 10:</p>
+	<form name="form1">
+		<input type="text" id="var1" name="intMin" size="20"
+			placeholder="first"></input><br /> <br /> <input type="text"
+			id="var2" name="intMax" size="20" placeholder="second"></input><br />
+		<br />
+	</form>
+	<button id="vr">Найти</button>
+
+	<p>
+		Результат операции: <b><span style="color: red" id="answer_random"></span></b>
+	</p>
+
+	<p>Корни квадратного уравнения:</p>
+	<form>
+		<input type="text" id="var3" name="intMin" size="20"
+			placeholder="a b c"></input><br /> <br />
+	</form>
+	<button id="abc">Найти</button>
+
+	<p>
+		Результат операции: <b><span style="color: red" id="abc_result"></span></b>
+	</p>
+
+	<p>Матрица 8x5:</p>
+	<button id="matrix">Найти</button>
+	<p>
+		<b><span style="color: red" id="matrix_result"></span></b>
+	</p>
+<p>Матрица 5x8:</p>
+	<button id="matrix5">Найти</button>
+	<p>
+		<b><span style="color: red" id="matrix5_result"></span></b>
+	</p>
+
+	<script type="text/javascript">
+	$(function() {
+		$('#vr').click(function() {
+			var var1 = $('#var1').val();
+			var var2 = $('#var2').val();
+			
+			$('#answer_random').load("myprogectArray?request=0&first=" + var1 + "&second=" + var2);
+		});
+		
+		$('#abc').click(function() {
+			var var3 = $('#var3').val();
+			var arr = var3.split(" ");
+			$('#abc_result').load("myprogectArray?request=1&a=" + arr[0] + "&b=" + arr[1] + "&c=" + arr[2]);
+		});
+		
+		
+		$('#matrix').click(function() {
+			
+			
+			$('#matrix_result').load("myprogectArray?request=2");
+		});
+		
+		$('#matrix5').click(function() {
+			
+			
+			$('#matrix5_result').load("myprogectArray?request=3");
+		});
+	});
+	
+	</script>
+
+</body>
+</html>
