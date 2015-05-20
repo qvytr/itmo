@@ -97,7 +97,7 @@ public class ArrayServlet extends HttpServlet {
 					+ " x2=" + (-bb + Math.sqrt(bb * bb - 4 * aa * cc)) / 2
 					/ aa);
 		} else {
-			printWriter.println("Нет корней");
+			printWriter.println("No roots");
 		}
 	}
 
